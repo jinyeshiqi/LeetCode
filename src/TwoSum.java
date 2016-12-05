@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by jinzichen on 2016/12/5.
  *
@@ -6,13 +9,18 @@
  */
 public class TwoSum {
     public int[] twoSum(int[] nums, int target) {
-        for(int i=0; i < nums.length; i++) {
-            for(int j=i+1; j < nums.length; j++) {
-                if(nums[j] == target - nums[i]) {
-                    return new int[] {i, j};
-                }
-            }
+        if (nums == null) {
+            return null;
         }
-        throw new IllegalArgumentException("No result.");
+        Map<Integer, Integer> numsMap = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int t = target - nums[i];
+            if (numsMap.containsKey(t)) {
+                return new int[] {numsMap.get(t), i};
+            }
+            numsMap.put(nums[i], i);
+        }
+
+        return new int[] {0, 0};
     }
 }
