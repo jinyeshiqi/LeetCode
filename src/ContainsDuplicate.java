@@ -9,7 +9,7 @@ import java.util.Set;
  */
 public class ContainsDuplicate {
     public boolean containsDuplicate(int[] nums) {
-        if (nums == null || nums.length == 0) {
+        if (nums == null || nums.length < 2) {
             return false;
         }
         Set<Integer> set = new HashSet<>();
